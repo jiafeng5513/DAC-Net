@@ -23,7 +23,7 @@ from elli_error_generate import (
     zernike_poly,
 )
 
-MATLAB_DIR = Path("/Users/anna/WorkSpace/Projects/CSST/Elli_error_generate/matlab")
+MATLAB_DIR = Path(__file__).resolve().parents[2] / "matlab"
 FAILURES = []
 
 

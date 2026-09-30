@@ -1,7 +1,8 @@
 % Verify the Python-written .mat files load as proper structs in Octave/MATLAB
 % and that the stored ellipticity is consistent with the stored PSF.
-addpath('/Users/anna/WorkSpace/Projects/CSST/Elli_error_generate/matlab');
-d = '/Users/anna/WorkSpace/Projects/CSST/Elli_error_generate/python/test_output';
+here = fileparts(mfilename('fullpath'));
+addpath(fullfile(here, '..', '..', 'matlab'));
+d = fullfile(here, '..', 'test_output');
 S = load(fullfile(d, 'ansmat.mat'));
 I = load(fullfile(d, 'initial.mat'));
 

@@ -23,9 +23,9 @@ env/
 # ---- MATLAB 编辑器自动备份 ----
 *.asv
 
-# ---- 仿真 / 求解生成产物(可重新生成;参考数据保留在 Elli_error_generate/matlab/)----
+# ---- 仿真 / 求解生成产物(可重新生成;参考数据保留在 src/matlab/)----
 output/
 solver_out/
 test_output/
-Elli_error_generate/python/*.mat
-Elli_error_generate/python/*.npz
+src/python/*.mat
+src/python/*.npz

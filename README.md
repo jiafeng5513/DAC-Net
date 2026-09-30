@@ -39,7 +39,7 @@ CSST 巡天望远镜 PSF 椭率测量中的**波像差校正**——蒙特卡洛
 ```
 DAC-Net/
 ├── docs/                          # 论文:英文原版 PDF + 中文译文(docx 及预览 pdf)
-├── Elli_error_generate/
+├── src/
 │   ├── matlab/                    # 原始 MATLAB 代码及参考数据
 │   │   ├── sim_mainV4_Monte_Carlo.m   # 主仿真程序(生成波像差 → PSF → 椭率)
 │   │   ├── zernike_fun.m / RandNum.m / cartesian2polar.m / cac_ellipticity_fun.m
@@ -63,10 +63,10 @@ DAC-Net/
 ```bash
 # 安装依赖(仓库根目录,仅需一次)
 python3 -m venv .venv
-.venv/bin/pip install -r Elli_error_generate/python/requirements.txt
+.venv/bin/pip install -r src/python/requirements.txt
 
 # 运行仿真(2 个蒙特卡洛样本,约 3 秒)
-.venv/bin/python Elli_error_generate/python/sim_main_v4.py --n 2 --seed 42 --out-dir ./output
+.venv/bin/python src/python/sim_main_v4.py --n 2 --seed 42 --out-dir ./output
 ```
 
 输出 `initial.{npz,mat}`(理论波前/PSF)与 `ansmat.{npz,mat}`(逐样本
@@ -77,12 +77,12 @@ Python 版还包含论文核心方法的**补偿求解器**(等效模型 + 虚�
 椭率误差均值 ~1e-3(逐样本最优可达 2e-4),满足论文 0.01 指标;`--jobs` 跨样本并行:
 
 ```bash
-.venv/bin/python Elli_error_generate/python/solve_compensation.py \
+.venv/bin/python src/python/solve_compensation.py \
     demo --samples 4 --pop 180 --gen 120 --seed 1 --jobs 4 --out ./solver_out
 ```
 
 完整参数、Python API、逐位复现 MATLAB 运行的方法见
-[Elli_error_generate/python/README.md](Elli_error_generate/python/README.md)。
+[src/python/README.md](src/python/README.md)。
 
 ## 正确性验证
 
@@ -90,9 +90,9 @@ Python 移植经三层验证,与 MATLAB 原版达到机器精度一致(PSF 最�
 椭率差异 ~1.7e-16,详见 python/README.md):
 
 ```bash
-octave --no-gui Elli_error_generate/python/tests/verify_components.m
-.venv/bin/python Elli_error_generate/python/tests/compare_components.py
-octave --no-gui Elli_error_generate/python/tests/verify_python_mat.m
+octave --no-gui src/python/tests/verify_components.m
+.venv/bin/python src/python/tests/compare_components.py
+octave --no-gui src/python/tests/verify_python_mat.m
 ```
 
 按此顺序运行;后两项依赖中间产物(`test_output/` 与 `/tmp` 下的系数文件),

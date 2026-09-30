@@ -96,11 +96,11 @@ save_results(initial, ansmat, './output')   # 写出 npz + mat
 
 ```bash
 # 合成实验:按论文协议生成 PSF-M 与带误差模型,验证补偿恢复精度(4 样本并行)
-.venv/bin/python Elli_error_generate/python/solve_compensation.py \
+.venv/bin/python src/python/solve_compensation.py \
     demo --samples 4 --pop 180 --gen 120 --seed 1 --out ./solver_out --jobs 4
 
 # 用 MATLAB 存档的 ansmat 样本做 PSF-M(补偿需吸收未知的 Deta_error)
-.venv/bin/python Elli_error_generate/python/solve_compensation.py \
+.venv/bin/python src/python/solve_compensation.py \
     archived --sample 1 --pop 120 --gen 60 --seed 4 --out ./solver_out
 ```
 

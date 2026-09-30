@@ -3,7 +3,7 @@
 
 Example
 -------
-    python sim_main_v4.py --n 2 --seed 42 --out-dir ../Elli_error_generate
+    python sim_main_v4.py --n 2 --seed 42 --out-dir ./output
 """
 
 from __future__ import annotations

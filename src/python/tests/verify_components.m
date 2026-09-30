@@ -1,7 +1,7 @@
 % Cross-language component verification harness (run with Octave).
 % Exercises the ORIGINAL MATLAB functions with fixed inputs and saves
 % the results for comparison against the Python port.
-addpath('/Users/anna/WorkSpace/Projects/CSST/Elli_error_generate/matlab');
+addpath(fullfile(fileparts(mfilename('fullpath')), '..', '..', 'matlab'));
 out = '/tmp/octave_components.mat';
 
 %% 1. zernike_fun: scalar and small grid, both orderings
