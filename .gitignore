@@ -1,0 +1,31 @@
+# ---- macOS ----
+.DS_Store
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---- 编辑器 / 工具 / 会话状态 ----
+.vscode/
+.idea/
+.omo/
+# .codegraph 是指向外部 codegraph 缓存的符号链接
+.codegraph
+
+# ---- MATLAB 编辑器自动备份 ----
+*.asv
+
+# ---- 仿真 / 求解生成产物(可重新生成;参考数据保留在 Elli_error_generate/matlab/)----
+output/
+solver_out/
+test_output/
+Elli_error_generate/python/*.mat
+Elli_error_generate/python/*.npz
